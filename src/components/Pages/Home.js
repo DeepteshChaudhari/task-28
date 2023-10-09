@@ -11,7 +11,8 @@ function Home() {
 
   useEffect(() => {
     setCartProducts(cartProducts);
-  }, [products]);
+  }, []);
+  // eslint-disable-next-line
 
   const handleCart = (event, product) => {
     if (event.target.textContent === "Add to Cart") {
