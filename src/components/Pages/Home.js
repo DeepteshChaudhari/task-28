@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import "./home.css";
 
@@ -9,6 +8,10 @@ import { useProduct } from "../context/products.context";
 function Home() {
   const { products } = useProduct();
   const { cartProducts, setCartProducts } = useCart();
+
+  useEffect(() => {
+    setCartProducts(cartProducts);
+  }, []);
 
   const handleCart = (event, product) => {
     if (event.target.textContent === "Add to Cart") {
@@ -25,16 +28,17 @@ function Home() {
   return (
     <div className="productContainer">
       {products &&
-        products.map((product) => (
-          <ProductCard
-            product={product}
-            key={product.id}
-            handleCart={handleCart}
-          />
-        ))}
+        products.map((product) => {
+          return (
+            <ProductCard
+              product={product}
+              key={product.id}
+              handleCart={handleCart}
+            />
+          );
+        })}
     </div>
   );
 }
 
 export default Home;
-
