@@ -11,7 +11,7 @@ function Home() {
 
   useEffect(() => {
     setCartProducts(cartProducts);
-  }, []);
+  }, [cartProducts]);
 
   const handleCart = (event, product) => {
     if (event.target.textContent === "Add to Cart") {
